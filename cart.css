@@ -1,0 +1,92 @@
+/* cart.css */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #eaeef3;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #555;
+    text-align: center;
+}
+
+#cart {
+    background-color: #ffffff;
+    padding: 20px;
+    width: auto;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cartItems {
+    width: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 500px;
+}
+
+.product-img {
+    width: 50px;
+    margin-right: 100%; /* Espaço entre a imagem e o botão, se necessário */
+    border-radius: 4px;
+}
+
+button {
+    display:inline;
+    align-items: center;
+    background-color: #4c6aaf;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Espaço entre imagem e botão */
+    margin-right: 80px;
+}
+
+button:hover {
+    background-color: #454ea0;
+}
+.p{
+    display: block;
+}
+.item-info {
+    display: flex;
+    align-items: center;
+}
+
+.item-info img {
+    margin-right: 80px; /* Espaço entre imagens */
+}
+
+.item-info1 {
+    display: flex;
+    align-items: center;
+}
+
+.item-info1 img {
+    margin-right: 15px; /* Espaço entre imagens */
+}
+
+.item-info2 {
+    display: flex;
+    align-items: center;
+}
+
+.item-info2 img {
+    margin-right: 15px; /* Espaço entre imagens */
+}
+

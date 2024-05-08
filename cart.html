@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja Virtual</title>
+    <link rel="stylesheet" type="text/css" href="./cart.css">
+    <style>
+        .hidden { display: none; }
+        .product-img { width: 100px; cursor: pointer; }
+        .product-button { margin: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo à Loja Virtual</h1>
+    <form id="userData">
+        <input type="text" id="cpf" placeholder="CPF" required>
+        <input type="text" id="name" placeholder="Nome" required>
+        <input type="text" id="whatsapp" placeholder="WhatsApp" required>
+        <button type="button" onclick="saveUserData()">Salvar Dados</button>
+    </form>
+
+    <div id="productSelection" class="hidden">
+        <!-- Botões para mostrar modelos -->
+        <button class="product-button" onclick="toggleVisibility('jalecos')">Jalecos</button>
+        <button class="product-button" onclick="toggleVisibility('camisas')">Camisas</button>
+        <button class="product-button" onclick="toggleVisibility('canecas')">Canecas</button>
+        <button class="product-button" onclick="toggleVisibility('garrafa')">Garrafa</button>
+        <button class="product-button" onclick="toggleVisibility('botton')">Botton</button>
+        <button class="product-button" onclick="toggleVisibility('livro')">Livro</button>
+        <button class="product-button" onclick="toggleVisibility('caneta')">Caneta</button>
+        <button class="product-button" onclick="toggleVisibility('agenda')">Agenda</button>
+    </div>
+
+    <!-- Produtos e seus modelos -->
+    <div id="jalecos" class="product hidden item-info product-img">
+        <div>
+            <img src="./Imagens/Terapeuta Certificado.webp" alt="Terapeuta Certificado" class="product-img">
+            <p>Terapeuta Certificado</p>
+            <select class="size-selector" data-type="Jaleco" data-model="Terapeuta Certificado" onchange="updateSizeSelection('Jaleco', 'Terapeuta Certificado', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Jaleco', 'Terapeuta Certificado')">Adicionar ao Carrinho</button>
+
+        </div>
+        <div>
+            <img src="./Imagens/CITRG azul Feminino.webp" alt="CITRG Azul Feminino" class="product-img" onclick="addToCart('Jaleco', 'CITRG Azul Feminino')">
+            <p>CITRG Azul Feminino</p>
+            <select class="size-selector" data-type="Jaleco" data-model="CITRG Azul Feminino" onchange="updateSizeSelection('Jaleco', 'CITRG Azul Feminino', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Jaleco', 'CITRG Azul Feminino')">Adicionar ao Carrinho</button>
+        </div>
+        <div>
+            <img src="./Imagens/CITRG azul masculino.webp" alt="CITRG Azul Masculino" class="product-img" onclick="addToCart('Jaleco', 'CITRG Azul Masculino')">
+            <p>CITRG Azul Masculino</p>
+            <select class="size-selector" data-type="Jaleco" data-model="CITRG Azul Masculino" onchange="updateSizeSelection('Jaleco', 'CITRG Azul Masculino', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Jaleco', 'CITRG Azul Masculino')">Adicionar ao Carrinho</button>
+        </div>
+        <div>
+            <img src="./Imagens/CITRG branco.webp" alt="CITRG Branco" class="product-img" onclick="addToCart('Jaleco', 'CITRG Branco')">
+            <p>CITRG Branco</p>
+            <select class="size-selector" data-type="Jaleco" data-model="CITRG Branco" onchange="updateSizeSelection('Jaleco', 'CITRG Branco', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Jaleco', 'CITRG Branco')">Adicionar ao Carrinho</button>
+        </div>
+        <div>
+            <img src="./Imagens/CITRG Rosa.webp" alt="CITRG Rosa" class="product-img" onclick="addToCart('Jaleco', 'CITRG Rosa')">
+            <p>CITRG Rosa</p>
+            <select class="size-selector" data-type="Jaleco" data-model="CITRG Rosa" onchange="updateSizeSelection('Jaleco', 'CITRG Rosa', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Jaleco', 'CITRG Rosa')">Adicionar ao Carrinho</button>
+        </div>
+
+        
+        
+    </div>
+
+    <div id="camisas" class="product hidden item-info1 product-img">
+
+        <div>
+            <img src="./Imagens/CamisaProtocolo.webp" alt="Camisa Protocolo" class="product-img" onclick="addToCart('Camisa', 'Camisa Protocolo')">
+            <p>Camisa Protocolo</p>
+            <select class="size-selector" data-type="Camisa" data-model="Camisa Protocolo" onchange="updateSizeSelection('Camisa', 'Camisa Protocolo', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Camisa', 'Camisa Protocolo')">Adicionar ao Carrinho</button>
+        </div>
+        <div>
+            <img src="./Imagens/CamisaprotocoloBranco.webp" alt="Camisa Protocolo Branco" class="product-img" onclick="addToCart('Camisa', 'Camisa Protocolo Branco')">
+            <p>Camisa Protocolo Branco</p>
+            <select class="size-selector" data-type="Camisa" data-model="Camisa Protocolo Branco" onchange="updateSizeSelection('Camisa', 'Camisa Protocolo Branco', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Camisa', 'Camisa Protocolo Branco')">Adicionar ao Carrinho</button>
+        </div>
+        <div>
+            <img src="./Imagens/CamisaImpactar.webp" alt="Camisa Impactar" class="product-img" onclick="addToCart('Camisa', 'Camisa Impactar')">
+            <p>Camisa Impactar</p>
+            <select class="size-selector" data-type="Camisa" data-model="Camisa Impactar" onchange="updateSizeSelection('Camisa', 'Camisa Impactar', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Camisa', 'Camisa Impactar')">Adicionar ao Carrinho</button>
+        </div>
+        <div>
+            <img src="./Imagens/CamisaFundoPoco.webp" alt="Camisa Fundo do Poço" class="product-img" onclick="addToCart('Camisa', 'Camisa Fundo do Poço')">
+            <p>Camisa Fundo do Poço</p>
+            <select class="size-selector" data-type="Camisa" data-model="Camisa Fundo do Poço" onchange="updateSizeSelection('Camisa', 'Camisa Fundo do Poço', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Camisa', 'Camisa Fundo do Poço')">Adicionar ao Carrinho</button>
+        </div>
+
+        <div>
+            <img src="./Imagens/CamisaMissao.jpg" alt="Camisa Missão" class="product-img" onclick="addToCart('Camisa', 'Camisa Missão')">
+            <p>Camisa Missão</p>
+            <select class="size-selector" data-type="Camisa" data-model="Camisa Missão" onchange="updateSizeSelection('Camisa', 'Camisa Missão', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Camisa', 'Camisa Missão')">Adicionar ao Carrinho</button>
+        </div>
+        <div>
+            <img src="./Imagens/CamisaPolo.jpg" alt="Camisa Polo" class="product-img" onclick="addToCart('Camisa', 'Camisa Polo')">
+            <p>Camisa Missão</p>
+            <select class="size-selector" data-type="Camisa" data-model="Camisa Polo" onchange="updateSizeSelection('Camisa', 'Camisa Polo', this.value)">
+                <option value="">Escolha o Tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+            </select>
+            <button onclick="console.log('Clicado!'); addToCart('Camisa', 'Camisa Polo')">Adicionar ao Carrinho</button>
+        </div>
+
+        
+    </div>
+
+    <div id="canecas" class="product hidden item-info1 product-img">
+        
+        <div>
+            <img src="./Imagens/Caneca Master.webp" alt="Master" class="product-img" onclick="addToCart('Caneca', 'Master')">
+            <p>Caneca Master</p>
+        </div>
+        <div>
+            <img src="./Imagens/CanecaFundoPoco.webp" alt="Caneca Fundo do poço" class="product-img" onclick="addToCart('Caneca', 'Caneca Fundo do poço')">
+            <p>Caneca Fundo do Poço</p>
+        </div>
+        <div>
+            <img src="./Imagens/CanecaExercito.webp" alt="Caneca Exército" class="product-img" onclick="addToCart('Caneca', 'Caneca Exército')">
+            <p>Caneca Exército</p>
+        </div>
+        <div>
+            <img src="./Imagens/QuantoPior.webp" alt="Caneca Quanto Pior" class="product-img" onclick="addToCart('Caneca', 'Caneca Quanto Pior')">
+            <p>Caneca Quanto Pior</p>
+        </div>
+        <div>
+            <img src="./Imagens/CanecaProtocolo.webp" alt="Caneca Protocolo" class="product-img" onclick="addToCart('Caneca', 'Caneca Protocolo')">
+            <p>Caneca Protocolo</p>
+        </div>
+        <div>
+            <img src="./Imagens/CanecaReprocessar.webp" alt="Caneca Reprocessar" class="product-img" onclick="addToCart('Caneca', 'Caneca Reprocessar')">
+            <p>Caneca Reprocessar</p>
+        </div>
+        <div>
+            <img src="./Imagens/CanecaCITRG.webp" alt="Caneca CITRG" class="product-img" onclick="addToCart('Caneca', 'Caneca CITRG')">
+            <p>Caneca CITRG</p>
+        </div>
+    </div>
+
+    <div id="garrafa" class="product hidden item-info1 product-img">
+        <img src="./Imagens/Garrafa.webp" alt="Garrafa" class="product-img" onclick="addToCart('Garrafa', 'Garrafa')">
+        <p>Garrafa</p>
+    </div>
+
+    <div id="botton" class="product hidden item-info1 product-img">
+        <img src="./Imagens/Botton.jpg" alt="Botton" class="product-img" onclick="addToCart('Botton', 'Botton')">
+        <p>Botton</p>
+    </div>
+
+    <div id="livro" class="product hidden item-info1 product-img">
+        <img src="./Imagens/Livro.webp" alt="Livro" class="product-img" onclick="addToCart('Livro', 'Livro')">
+        <p>Livro: O poder da transformação da TRG</p>
+    </div>
+
+    <div id="caneta" class="product hidden item-info1 product-img">
+        <img src="./Imagens/caneta.avif" alt="Caneta" class="product-img" onclick="addToCart('Caneta', 'Caneta')">
+        <p>Caneta</p>
+    </div>
+
+    <div id="agenda" class="product hidden item-info1 product-img">
+        <img src="./Imagens/Agenda.jpg" alt="Agenda" class="product-img" onclick="addToCart('Agenda', 'Agenda')">
+        <p>Agenda</p>
+    </div>
+
+    <div id="cart" class="hidden">
+        <h2>Carrinho de Compras</h2>
+        <ul id="cartItems"></ul>
+        <div id="invoice"></div>
+        <button type="button" onclick="finalizePurchase()">Finalizar Compra</button>
+    </div>
+
+    <div id="confirmation" class="hidden">
+        <h2>Compra Finalizada</h2>
+        <p id="confirmationDetails"></p>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
