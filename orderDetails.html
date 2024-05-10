@@ -7,82 +7,27 @@
 </head>
 <body>
     <h1>Detalhes do Pedido</h1>
-    <div id="orderInfo"></div>
-    <button onclick="window.location.href='index.html'">Voltar ao Início</button>
+    <form id="orderDetailsForm" onsubmit="sendDataToSheetDB(event)">
+        <div id="userInfo">
+            <h2>Informações do Usuário</h2>
+            <p><label for="userName">Nome:</label>
+            <input type="text" id="userName" name="userName" readonly></p>
 
-    <script>
-        const prices = {
-            'Caneca': {
-                'Master': 90,
-                'Caneca Fundo do poço': 80,
-                'Caneca Exército': 80,
-                'Caneca Quanto Pior': 80,
-                'Caneca Protocolo': 80,
-                'Caneca Reprocessar': 80,
-                'Caneca CITRG': 80
-                // Adicione outros modelos de caneca com seus respectivos preços, se necessário
-            },
-            'Jaleco': {
-                'Terapeuta Certificado': 290.00,
-                'CITRG Azul Feminino': 290.00,
-                'CITRG Azul Masculino': 290.00,
-                'CITRG Branco': 290.00,
-                'CITRG Rosa': 290.00,
-                // Adicione outros modelos de jaleco com seus respectivos preços, se necessário
-            },
-            // Adicione outros tipos de produto com seus respectivos modelos e preços, se necessário
-            'Camisa': {
-                'Camisa Protocolo': 90,
-                'Camisa Protocolo Branco': 90,
-                'Camisa Impactar': 90,
-                'Camisa Fundo do Poço': 90,
-                'Camisa Missão': 90,
-                'Camisa Polo': 160
-            },
-            'Garrafa':{
-                'Garrafa': 160
-            },
-            'Botton':{
-                'Botton': 25
-            },
-            'Livro':{
-                'Livro': 50
-            },
-            'Caneta': {
-                'Caneta': 50
-            },
-            'Agenda': {
-                'Agenda': 60
-            }
-        };
-    
-        window.onload = function() {
-            const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
-            
-            const userInfo = document.createElement('div');
-            userInfo.innerHTML = `<h2>Informações do Usuário</h2>
-                                  <p>Nome: ${orderDetails.userData.name}</p>
-                                  <p>CPF: ${orderDetails.userData.cpf}</p>
-                                  <p>WhatsApp: ${orderDetails.userData.whatsapp}</p>`;
-    
-            const cartInfo = document.createElement('div');
-            cartInfo.innerHTML = '<h2>Itens Comprados</h2>';
-            let total = 0;
-    
-            orderDetails.cart.forEach(item => {
-                const price = (prices[item.type] && prices[item.type][item.model]) ? prices[item.type][item.model] : 'N/A';
-                cartInfo.innerHTML += `<p>${item.type} - ${item.model}: R$${price}</p>`;
-                if (price !== 'N/A') {
-                    total += price;
-                }
-            });
-    
-            cartInfo.innerHTML += `<p><strong>Total da Compra: R$${total}</strong></p>`;
-            const orderInfoDiv = document.getElementById('orderInfo');
-            orderInfoDiv.appendChild(userInfo);
-            orderInfoDiv.appendChild(cartInfo);
-        };
-    </script>
+            <p><label for="userCPF">CPF:</label>
+            <input type="text" id="userCPF" name="userCPF" readonly></p>
+
+            <p><label for="userPhone">WhatsApp:</label>
+            <input type="text" id="userPhone" name="userPhone" readonly></p>
+        </div>
+        <div id="cartInfo">
+            <h2>Itens Comprados</h2>
+            <!-- Os itens serão inseridos aqui via JavaScript -->
+        </div>
+        <p id="totalPrice"></p>
+        <button type="submit">Enviar para Google Sheets</button>
+        <button type="button" onclick="window.location.href='index.html'">Voltar ao Início</button>
+    </form>
+
+    <script src="./sendData.js"></script>
 </body>
 </html>
-
