@@ -147,18 +147,40 @@ function finalizePurchase() {
         cart: cart,
         total: total
     };
-
-    console.log('Detalhes do pedido:', orderDetails);
-
-    // Salvando no localStorage temporariamente
+ // Salvando no localStorage temporariamente
     localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
 
     // Limpar o carrinho no localStorage
     localStorage.removeItem('cart');
     cart = []; // Resetando o carrinho localmente
+        // Envio dos dados para o SheetMonkey
+      // Preparar os dados para envio
+    const formData = new FormData();
+    formData.append('Nome', orderDetails.userData.name);
+    formData.append('CPF', orderDetails.userData.cpf);
+    formData.append('WhatsApp', orderDetails.userData.whatsapp);
+    formData.append('Order', JSON.stringify(orderDetails.cart));
+    formData.append('Total', orderDetails.total);    
+
+    fetch('https://api.sheetmonkey.io/form/xfxcFaC3Js3GPGvsYFaUQT', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+          .then(data => {
+              console.log('Dados enviados com sucesso:', data);
+              // Aqui você pode redirecionar o usuário ou exibir uma confirmação
+              window.location.href = "orderDetails.html";
+          })
+          .catch(error => console.error('Erro ao enviar dados:', error));
+
+    console.log('Detalhes do pedido:', orderDetails);    
 
     console.log('Carrinho limpo e redirecionando para a página de detalhes do pedido.');
     window.location.href = "orderDetails.html";
+
+  
+
+      console.log('Carrinho limpo e redirecionando para a página de detalhes do pedido.');
 }
 
 function calculateTotal() {
