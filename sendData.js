@@ -70,7 +70,7 @@ window.onload = function() {
 
 function sendDataToSheetDB(event) {
     event.preventDefault(); // Evitar recarregamento da página
-    const url = 'https://sheetdb.io/api/v1/7lnfe2rlpwyqw'; // Substitua YOUR_API_ID pela sua ID de API real
+    const url = 'https://sheetdb.io/api/v1/mne7q41q7t34h'; // Substitua YOUR_API_ID pela sua ID de API real
 
     // Preparar dados para envio
     const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
