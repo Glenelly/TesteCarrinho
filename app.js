@@ -139,6 +139,31 @@ function removeFromCart(index) {
     updateCartDisplay();
 }
 
+function enviarDadosParaSheetDB() {
+    const urlApi = 'https://sheetdb.io/api/v1/f90vch0266zva'; // Substitua isso pela URL fornecida pelo SheetDB
+    const dados = {
+        data: [{
+            Nome: userData.name,
+            WhatsApp: userData.whatsapp,
+            CPF: userData.cpf,
+            Produtos: JSON.stringify(cart.map(item => ({ tipo: item.type, modelo: item.model }))), // Serializando lista de produtos
+            Quantidade: cart.reduce((acc, item) => acc + item.quantity, 0), // Somando quantidade total
+            Total: cart.reduce((acc, item) => acc + item.total, 0) // Calculando total
+        }]
+    };
+
+    fetch(urlApi, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+    })
+    .then(response => response.json())
+    .then(data => console.log('Dados enviados com sucesso:', data))
+    .catch(error => console.error('Erro ao enviar dados:', error));
+}
+
 function finalizePurchase() {
     console.log("Finalizar compra chamada");
     const total = calculateTotal();
@@ -155,32 +180,15 @@ function finalizePurchase() {
     cart = []; // Resetando o carrinho localmente
         // Envio dos dados para o SheetMonkey
       // Preparar os dados para envio
-    const formData = new FormData();
-    formData.append('Nome', orderDetails.userData.name);
-    formData.append('CPF', orderDetails.userData.cpf);
-    formData.append('WhatsApp', orderDetails.userData.whatsapp);
-    formData.append('Order', JSON.stringify(orderDetails.cart));
-    formData.append('Total', orderDetails.total);    
 
-    fetch('https://api.sheetmonkey.io/form/9KmeNbpucNjRu4ehMvTRCW', {
-            method: 'POST',
-            body: formData
-        }).then(response => response.json())
-          .then(data => {
-              console.log('Dados enviados com sucesso:', data);
-              // Aqui você pode redirecionar o usuário ou exibir uma confirmação
-              window.location.href = "orderDetails.html";
-          })
-          .catch(error => console.error('Erro ao enviar dados:', error));
+    enviarDadosParaSheetDB()
 
     console.log('Detalhes do pedido:', orderDetails);    
 
     console.log('Carrinho limpo e redirecionando para a página de detalhes do pedido.');
     window.location.href = "orderDetails.html";
 
-  
-
-      console.log('Carrinho limpo e redirecionando para a página de detalhes do pedido.');
+    console.log('Carrinho limpo e redirecionando para a página de detalhes do pedido.');
 }
 
 function calculateTotal() {
