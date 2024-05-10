@@ -162,7 +162,7 @@ function finalizePurchase() {
     formData.append('Order', JSON.stringify(orderDetails.cart));
     formData.append('Total', orderDetails.total);    
 
-    fetch('https://api.sheetmonkey.io/form/xfxcFaC3Js3GPGvsYFaUQT', {
+    fetch('https://api.sheetmonkey.io/form/9KmeNbpucNjRu4ehMvTRCW', {
             method: 'POST',
             body: formData
         }).then(response => response.json())
